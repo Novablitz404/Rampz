@@ -29,19 +29,6 @@ export const BASE_SEPOLIA_CONFIG: NetworkConfig = {
     logoUrl: '/Base_Network_Logo.svg' // You will need to add this logo to your /public folder
 };
 
-export const CORE_TESTNET_CONFIG: NetworkConfig = {
-    chainId: 1114,
-    chainName: "Core Testnet",
-    rpcUrls: ["https://rpc.test2.btcs.network"],
-    nativeCurrency: {
-        name: "Core",
-        symbol: "tCORE",
-        decimals: 18,
-    },
-    blockExplorerUrls: ["https://scan.test2.btcs.network"],
-    logoUrl: '/core.svg',
-};
-
 export const LISK_SEPOLIA_CONFIG: NetworkConfig = {
     chainId: 4202,
     chainName: "Lisk Sepolia Testnet",
@@ -53,19 +40,6 @@ export const LISK_SEPOLIA_CONFIG: NetworkConfig = {
     },
     blockExplorerUrls: ["https://sepolia-blockscout.lisk.com"],
     logoUrl: '/lisk-profile-w.svg',
-};
-
-export const MORPH_HOLESKY_CONFIG: NetworkConfig = {
-    chainId: 2810,
-    chainName: "Morph Holesky",
-    rpcUrls: ["https://rpc-holesky.morphl2.io"],
-    nativeCurrency: {
-        name: "Ether",
-        symbol: "ETH",
-        decimals: 18,
-    },
-    blockExplorerUrls: ["https://bridge-holesky.morphl2.io/"],
-    logoUrl: '/Morph.logo-Green.svg',
 };
 
 // Example: How to add a new network (Ethereum Mainnet)
@@ -85,9 +59,7 @@ export const MORPH_HOLESKY_CONFIG: NetworkConfig = {
 // Array of all supported networks for the dropdown
 export const SUPPORTED_NETWORKS: NetworkConfig[] = [
     LISK_SEPOLIA_CONFIG,    // Lisk Sepolia (now first)
-    MORPH_HOLESKY_CONFIG,   // Morph Holesky
     BASE_SEPOLIA_CONFIG,     // Base Sepolia
-    CORE_TESTNET_CONFIG,     // Core Testnet
     // Add your new network here:
     // ETHEREUM_MAINNET_CONFIG,
     // You can add more supported networks here in the future
@@ -145,10 +117,6 @@ export const CURRENCY_PAYMENT_METHODS: { [key: string]: string[] } = {
 };
 
 export const CONTRACT_ADDRESSES: Record<number, string> = {
-  //4202:  "",   // Lisk Sepolia Testnet
-  //2810:  "",   // Morph Holesky
-  84532: "0x439c51D57227FE51D764bD1c991C646F762CECE5",   // Base Sepolia
-  //1114:  "",   // Core Testnet
-  // Add your new network contract address here:
-  // 1: "0xYOUR_CONTRACT_ADDRESS_HERE", // Ethereum Mainnet
+  4202:  "0x599Cf09b61d5059AD87E8399dB49e2618B6ABAD1",   // Lisk Sepolia Testnet
+  84532: "0x3BEeC28Bed1877E813Af02246AB01A353c3cC817",   // Base Sepolia
 };

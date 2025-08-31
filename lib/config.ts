@@ -4,26 +4,6 @@ import { http, createConfig, createStorage, noopStorage } from 'wagmi';
 import { baseSepolia } from 'wagmi/chains';
 import { coinbaseWallet, injected } from 'wagmi/connectors';
 
-// Core Testnet chain config
-export const coreTestnet = {
-  id: 1114,
-  name: 'Core Testnet',
-  network: 'core-testnet',
-  nativeCurrency: {
-    name: 'Core',
-    symbol: 'tCORE',
-    decimals: 18,
-  },
-  rpcUrls: {
-    default: { http: ['https://rpc.test2.btcs.network'] },
-    public: { http: ['https://rpc.test2.btcs.network'] },
-  },
-  blockExplorers: {
-    default: { name: 'CoreScan', url: 'https://scan.test.btcs.network' },
-  },
-  testnet: true,
-};
-
 // Lisk Sepolia Testnet chain config
 export const liskSepolia = {
   id: 4202,
@@ -40,26 +20,6 @@ export const liskSepolia = {
   },
   blockExplorers: {
     default: { name: 'Lisk Blockscout', url: 'https://sepolia-blockscout.lisk.com' },
-  },
-  testnet: true,
-};
-
-// Morph Holesky chain config
-export const morphHolesky = {
-  id: 2810,
-  name: 'Morph Holesky',
-  network: 'morph-holesky',
-  nativeCurrency: {
-    name: 'Ether',
-    symbol: 'ETH',
-    decimals: 18,
-  },
-  rpcUrls: {
-    default: { http: ['https://rpc-holesky.morphl2.io'] },
-    public: { http: ['https://rpc-holesky.morphl2.io'] },
-  },
-  blockExplorers: {
-    default: { name: 'Morph Bridge', url: 'https://bridge-holesky.morphl2.io/' },
   },
   testnet: true,
 };
@@ -85,7 +45,7 @@ export const morphHolesky = {
 // };
 
 export const config = createConfig({
-  chains: [liskSepolia, morphHolesky, baseSepolia, coreTestnet], // All networks enabled
+  chains: [liskSepolia, baseSepolia], // Only Lisk Sepolia and Base Sepolia
   connectors: [
     injected({
         target: 'metaMask',
@@ -100,9 +60,7 @@ export const config = createConfig({
   }),
   transports: {
     [liskSepolia.id]: http('https://rpc.sepolia-api.lisk.com'), // Lisk first
-    [morphHolesky.id]: http('https://rpc-holesky.morphl2.io'), // Morph Holesky
     [baseSepolia.id]: http(),
-    [coreTestnet.id]: http('https://rpc.test2.btcs.network'),
     // Add your new network transport here:
     // [ethereumMainnet.id]: http('https://mainnet.infura.io/v3/YOUR_INFURA_KEY'),
   },
@@ -114,8 +72,6 @@ const coinIdMap: { [symbol: string]: string } = {
   'USDT': 'tether',
   'USDC': 'usd-coin',
   'IDRX': 'idrx',
-  'tCORE': 'coredaoorg', // Add this line for testnet symbol
-  'CORE': 'coredaoorg',  // Add this line for mainnet symbol
 };
 
 export async function fetchTokenPrice(tokenSymbol: string, currency: string): Promise<number> {
